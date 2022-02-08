@@ -1,5 +1,11 @@
 # DASHBOARD LORD OF DUNGEONS
 
+## SETUP VUE
+
+```
+npm install -g @vue/cli
+```
+
 ## Project setup
 
 ```
