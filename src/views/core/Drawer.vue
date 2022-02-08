@@ -99,6 +99,40 @@ export default Vue.extend({
                 to: '/clients',
             }]
         }, {
+            icon: 'mdi-map-legend',
+            title: 'Map',
+            to: '/map',
+        }, {
+            icon: 'mdi-calendar-star',
+            title: 'Event',
+            to: '/event',
+        }, {
+            group: true,
+            icon: 'mdi-select-group',
+            title: 'Entités',
+            children: [{
+                title: 'Vocations',
+                icon: 'mdi-face-recognition',
+                to: '/vocations',
+            }, {
+                title: 'Monsters',
+                icon: 'mdi-emoticon-devil-outline',
+                to: '/monsters',
+            }]
+        }, {
+            group: true,
+            icon: 'mdi-group',
+            title: 'Items',
+            children: [{
+                title: 'Equipements',
+                icon: 'mdi-sword-cross',
+                to: '/equipements',
+            }, {
+                title: 'Objets',
+                icon: 'mdi-bottle-tonic-plus-outline',
+                to: '/objects',
+            }]
+        }, {
             title: 'Factures',
             icon: 'mdi-receipt',
             to: '/factures',
