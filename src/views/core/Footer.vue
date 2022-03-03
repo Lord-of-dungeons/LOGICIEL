@@ -5,7 +5,7 @@
         <v-col cols="12" md="auto">
             <div class="caption font-weight-light pt-0 pt-md-0 text-center">
                 &copy;
-                <span> {{ new Date().getFullYear() }} - Dashboard E-Commerce</span>
+                <span> {{ new Date().getFullYear() }} - Dashboard RPG</span>
             </div>
         </v-col>
     </v-row>

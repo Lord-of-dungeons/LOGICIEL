@@ -109,19 +109,26 @@ export default Vue.extend({
 						this.isDataOk(errorObj.data.message) ? errorObj.data.message : ''
 					)}`
 				);
-				this.errorMessage(this.isDataOk(errorObj.data.message) ? errorObj.data.message : 'Le serveur ne répond plus !');
+				this.errorMessage(this.isDataOk(errorObj.data.message) ? errorObj.data.message : this.isDataOk(errorObj.data.error) && typeof errorObj.data.error === "string"  ? errorObj.data.error : 'Le serveur ne répond plus !');
 			} else {
 				console.log(JSON.stringify(errorObj));
 				this.errorMessage('Le serveur ne répond plus !');
 			}
 		},
-		configAxios: function(): AxiosRequestConfig {
+		configAxiosJson: function(): AxiosRequestConfig {
 			return {
 				headers: {
 					'Content-Type': 'application/json;charset=utf-8',
 					Accept: 'application/json'
 				}
 				//responseType: 'json'
+			} as AxiosRequestConfig;
+		},		
+		configAxiosFormData: function(): AxiosRequestConfig {
+			return {
+				headers: {
+					'Content-Type': 'multipart/form-data;',
+				}
 			} as AxiosRequestConfig;
 		},
 		changeToFormatDateFr(input: string): string {
@@ -196,7 +203,7 @@ export default Vue.extend({
 			});
 		},
 		isObjectNotEmpty(objectTest: any) {
-			return objectTest && typeof objectTest === 'object' && Object.keys(objectTest).length !== 0 ? true : false;
+			return this.isDataOk(objectTest) && typeof objectTest === 'object' && Object.keys(objectTest).length !== 0 ? true : false;
 		},
 		isDataOk(data: string | any[] | object | number | null | undefined) {
             if (typeof data === 'string') {

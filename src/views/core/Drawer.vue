@@ -16,7 +16,7 @@
     </v-row>
     <v-divider class="my-2"></v-divider>
     <v-list class="py-0" v-for="(item, index) in items" :key="index" v-if="item.disabled !== true">
-        <v-list-item v-if="!item.group" dense link :to="item.to">
+        <v-list-item v-if="!isDataOk(item.children)" dense link :to="item.to">
             <v-list-item-action>
                 <v-icon v-if="!$vuetify.theme.dark" style="text-shadow: 0.1em 0.1em 0.1em white">{{ item.icon }}</v-icon>
                 <v-icon v-else>{{ item.icon }}</v-icon>
@@ -70,9 +70,11 @@
 
 <script lang="ts">
 import Vue from "vue";
+import Gestion from "@/mixins/Gestion"
 
 export default Vue.extend({
     name: "DashboardCoreDrawer",
+    mixins: [Gestion],
     data: (): any => ({
         barImageJour: "https://images.prismic.io/cadremploi-edito/MjZjZTU0MDMtNDJkZC00MWM4LTk5M2EtYjNhODExZmRjYzli_shutterstock_664647223.jpg?auto=compress,format&rect=0,0,1000,500&w=800&h=400", //https://blog.reedexpo.fr/wp-content/uploads/2020/04/plan-d-action-commercial-scaled.jpg
         barImageNuit: "https://img.freepik.com/photos-gratuite/podium-scene-geometrique-noir-3d-fond-sombre_167650-652.jpg?size=626&ext=jpg&ga=GA1.2.1686371180.1616284800",
@@ -100,12 +102,12 @@ export default Vue.extend({
             }]
         }, {
             icon: 'mdi-map-legend',
-            title: 'Map',
-            to: '/map',
+            title: 'Maps',
+            to: '/maps',
         }, {
             icon: 'mdi-calendar-star',
-            title: 'Event',
-            to: '/event',
+            title: 'Events',
+            to: '/events',
         }, {
             group: true,
             icon: 'mdi-select-group',
@@ -148,6 +150,7 @@ export default Vue.extend({
             to: '/parametres',
         }]
     }),
+    mounted(){},
     computed: {
         drawer: {
             get() {

@@ -44,7 +44,7 @@
         </v-col>
         <v-col cols="12" md="8">
             <v-form ref="formContact" v-model="rules.valid" lazy-validation>
-                <base-material-card :kinesisType="'depth'" :kinesisStrength="12"  color="primary" icon="mdi-handshake" max-width="100%" width="auto" inline class="px-5 py-3 mx-auto">
+                <base-material-card :kinesisType="'depth'" :kinesisStrength="12" color="primary" icon="mdi-handshake" max-width="100%" width="auto" inline class="px-5 py-3 mx-auto">
                     <template v-slot:after-heading>
                         <span class="text-h5 font-weight-light">Contacter le support</span>
                     </template>
@@ -192,19 +192,19 @@ export default Vue.extend({
                 else {
                     this.isOverlay = true;
                     axiosApi
-                        .post("/support/mail", contact, this.configAxios())
+                        .post("/support/mail", contact, this.configAxiosJson())
                         .then((response: AxiosResponse) => {
                             if (this.isDataOk(response)) {
                                 Object.assign(this.$data, this.$options.data()); //reset data
                                 this.$refs.formContact.reset();
                                 this.successMessage("Le mail a bien été envoyé au support");
                             }
+                            this.isOverlay = false;
                         })
                         .catch((error: AxiosError) => {
                             this.catchAxios(error)
-                        }).finally(() => {
                             this.isOverlay = false;
-                        });
+                        })
                 }
             }
         }

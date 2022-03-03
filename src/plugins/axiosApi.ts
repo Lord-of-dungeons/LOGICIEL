@@ -36,7 +36,9 @@ axiosApi.interceptors.response.use((response: any) => {
                     /*query: {
                         redirect: router.currentRoute.fullPath
                     }*/
-                }).catch(() => {});;
+                }).catch((err) => {
+                    console.log(err)
+                });
                 break;
         }
         return Promise.reject(error.response);

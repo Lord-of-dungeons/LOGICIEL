@@ -87,7 +87,31 @@ const routes: Array<RouteConfig> = [
 				path: '/support',
 				component: () => import('@/views/pages/Support.vue'),
 				meta: setRequiresAuth(true)
-			}
+			},
+			{
+				name: 'Maps',
+				path: '/maps',
+				component: () => import('@/views/pages/Maps.vue'),
+				meta: setRequiresAuth(true)
+			},
+			{
+				name: 'Informations-Map',
+				path: '/maps/map',
+				component: () => import('@/views/pages/InfosMap.vue'),
+				meta: setRequiresAuth(true)
+			},
+			{
+				name: 'Events',
+				path: '/events',
+				component: () => import('@/views/pages/Events.vue'),
+				meta: setRequiresAuth(true)
+			},
+			{
+				name: 'Informations-Event',
+				path: '/events/event',
+				component: () => import('@/views/pages/InfosEvent.vue'),
+				meta: setRequiresAuth(true)
+			},
 		]
 	},
 	{

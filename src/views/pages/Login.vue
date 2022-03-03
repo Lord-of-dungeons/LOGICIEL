@@ -187,49 +187,6 @@ export default Vue.extend({
                 this.auth.password = '';
             })
         },
-        /*oldConnexion: function (email: string, password: string): void {
-            //bus.$emit("connected", true);
-            if (email == null || email == "")
-                return this.errorMessage("Identifiant vide !");
-            if (password == null || password == "")
-                return this.errorMessage("Mot de passe vide !");
-
-            this.isOverlay = true;
-            const payload = {
-                email: email,
-                password: password
-            };
-            axiosApi
-                .post("/login", qs.stringify(payload))
-                .then((response: AxiosResponse) => {
-                    localStorage.setItem("SET_TOKEN", response.data.token);
-                    axiosApi.defaults.headers.common["Authorization"] = `Bearer ${localStorage.getItem("SET_TOKEN")}`;
-                    if (localStorage.getItem("SET_TOKEN") == null) return this.errorMessage("Token inconnu !");
-                    const isAdmin = response.data.user.role.toLowerCase() === "administrateur" ? true : false;
-                    if (response.data.user.role.toLowerCase() !== "administrateur" && response.data.user.role.toLowerCase() !== "commercial") {
-                        this.isOverlay = false;
-                        localStorage.clear();
-                        return this.errorMessage('Vous n\'avez pas l\'autorisation d\'accéder à la plateforme');
-                    } else {
-                        if (isAdmin === undefined || isAdmin === null) {
-                            this.isOverlay = false;
-                            localStorage.clear();
-                            return this.errorMessage('Erreur');
-                        } else {
-                            this.setAdminStatus(isAdmin) //this.$store.commit("SET_IS_ADMIN", isAdmin);
-                            bus.$emit("connected", true);
-                            return this.$router.push({
-                                name: "Accueil",
-                            });
-                        }
-                    }
-                })
-                .catch((error) => {
-                    this.catchAxios(error);
-                    this.isOverlay = false;
-                    this.auth.password = '';
-                })
-        },*/
         resetPassword: function (email: string) {
             if (email == null || email == "") return this.errorMessage("Email vide !");
 
