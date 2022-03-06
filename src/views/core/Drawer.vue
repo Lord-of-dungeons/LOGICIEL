@@ -92,7 +92,7 @@ export default Vue.extend({
             icon: 'mdi-account-group-outline',
             title: 'Utilisateurs',
             children: [{
-                title: 'Commerciaux',
+                title: 'Administrateurs',
                 icon: 'mdi-account-tie-outline',
                 to: '/utilisateurs',
             }, {
@@ -128,7 +128,7 @@ export default Vue.extend({
             children: [{
                 title: 'Equipements',
                 icon: 'mdi-sword-cross',
-                to: '/equipements',
+                to: '/equipments',
             }, {
                 title: 'Objets',
                 icon: 'mdi-bottle-tonic-plus-outline',

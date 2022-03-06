@@ -11,28 +11,28 @@ export const rules = Vue.observable({
     valid: true,
     dateFrRules: [
         (v: any) => !!v || "Veuillez remplir le champ",
-        (v: any) => (v && v.match(dateFrRegex) != null) || "La date (FR) n'est pas au bon format",
+        (v: any) => (v && String(v).match(dateFrRegex) != null) || "La date (FR) n'est pas au bon format",
     ],
     dateEnRules: [
         (v: any) => !!v || "Veuillez remplir le champ",
-        (v: any) => (v && v.match(dateEnRegex) != null) || "La date (EN) n'est pas au bon format",
+        (v: any) => (v && String(v).match(dateEnRegex) != null) || "La date (EN) n'est pas au bon format",
     ],
     emailRules: [
         (v: any) => !!v || "Veuillez remplir le champ",
-        (v: any) => (v && v.match(emailRegex) != null) ||"L'email n'est pas au bon format",
+        (v: any) => (v && String(v).match(emailRegex) != null) ||"L'email n'est pas au bon format",
     ],
     passwordRules: [
         (v: any) => !!v || "Veuillez remplir le champ",
-        (v: any) => (v && v.match(passwordRegex) != null) || "Le mot de passe n'est pas au bon format",
+        (v: any) => (v && String(v).match(passwordRegex) != null) || "Le mot de passe n'est pas au bon format",
         (v: any) => (v && v.length >= 7 && v.length <= 20) || "Mot de passe doit contenir entre 7 et 20 caractères",
     ],
     textRules: [
         (v: any) => !!v || "Veuillez remplir le champ",
-        (v: any) => (v && v.match(/^[a-zA-Z]*$/) != null) || "Seuls les lettres sont autorisé",
+        (v: any) => (v && String(v).match(/^[a-zA-Z]*$/) != null) || "Seuls les lettres sont autorisé",
     ],
     caractereRules: [
         (v: any) => !!v || "Veuillez remplir le champ",
-        (v: any) => (v && v.match(/^[^@"()/!_$*€£`+=;?#]+$/) != null) || "Le texte n'est pas au bon format",
+        (v: any) => (v && String(v).match(/^[^@"()/!$*€£`+=;?#]+$/) != null) || "Le texte n'est pas au bon format",
         (v: any) => (v && v.length >= 2 && v.length <= 25) || "Le texte doit contenir entre 2 et 25 caractères",
     ],
     contentRules:[        
@@ -41,11 +41,11 @@ export const rules = Vue.observable({
     ],
     numericRules: [
         (v: any) => !!v || "Veuillez remplir le champ",
-        (v: any) => (v && v.match(/^[0-9]+$/) != null) || "Seuls les chiffres sont autorisé",
+        (v: any) => (v && String(v).match(/^[0-9]+$/) != null) || "Seuls les chiffres sont autorisé",
     ],
     floatRules:[  
         (v: any) => !!v || "Veuillez remplir le champ",
-        (v: any) => (v && v.match(/^[0-9]+(\.[0-9]{0,})$/) != null) || "Seuls les nombres à virgule sont autorisé"
+        (v: any) => (v && String(v).match(/^[0-9]+(\.[0-9]{0,})$/) != null) || "Seuls les nombres à virgule sont autorisé"
     ],
     champRules: [(v: any) => !!v || "Veuillez remplir le champ"]
 });

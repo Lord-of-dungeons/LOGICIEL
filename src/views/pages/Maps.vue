@@ -8,14 +8,11 @@
                     <v-icon aria-label="Close" class="ml-auto" @click="isDialogNewMap = false">mdi-close</v-icon>
                 </v-card-title>
                 <v-col cols="12">
-                    <div class="text-center">
+                    <div class="text-center mb-5">
                         <v-row>
                             <v-col cols="12" md="6">
                                 <v-text-field color="indigo" label="Name*" v-model.trim="map.name" prepend-icon="mdi-alphabetical" clearable :rules="rules.caractereRules" required />
                             </v-col>
-                            <!--<v-col cols="12" md="4">
-                                <v-text-field color="indigo" label="Map path*" v-model.trim="map.map_path" prepend-icon="mdi-alphabetical" clearable :rules="rules.contentRules" required />
-                            </v-col>-->
                             <v-col cols="12" md="6">
                                 <v-file-input color="indigo" small-chips v-model="map.img" accept="image/*" label="Image*" truncate-length="15" :rules="rules.champRules" required></v-file-input>
                             </v-col>
@@ -33,8 +30,7 @@
     <v-dialog v-model="isDialogDeleteMap" width="500" overlay-opacity="0.8">
         <v-card outlined>
             <v-card-title>
-                Supprimer la map {{ mapToDelete.firstname }}
-                {{ mapToDelete.lastname }} ?
+                Supprimer la map {{ mapToDelete.name }}  ?
             </v-card-title>
             <v-card-actions>
                 <v-spacer></v-spacer>

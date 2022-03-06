@@ -1,19 +1,19 @@
 <template>
-<v-container id="utilisateur" fluid tag="section">
+<v-container id="administrateur" fluid tag="section">
     <v-row justify="center">
         <v-col cols="12" md="8">
             <base-material-card color="info">
                 <template v-slot:heading>
                     <div v-if="$route.params.isEdit === false">
                         <div class="text-h5 white--text">
-                            <span v-if="user.role === 'Administrateur'">Administrateur</span>
-                            <span v-else>Commercial</span><br />
+                            <span v-if="user.role.toLowerCase() === 'administrateur'">Administrateur</span>
+                            <span v-else>Utilisateur</span><br />
                         </div>
                         Dernière connexion : {{ user.lastLogin | moment("YYYY-MM-DD HH:mm") }}
                     </div>
                     <div v-else>
                         <div class="text-h5 white--text mb-4">
-                            <v-icon large left>mdi-account-edit-outline</v-icon>Modification utilisateur
+                            <v-icon large left>mdi-account-edit-outline</v-icon>Modification administrateur
                         </div>
                         <div class="subtitle-2 white--text">
                             <span>{{ user.email }}</span>
@@ -61,7 +61,7 @@
                         </v-simple-table>
                         <v-row class="mt-2">
                             <v-col cols="12" class="text-left">
-                                <v-btn class="mr-1" outlined color="error" text to="/utilisateurs">
+                                <v-btn class="mr-1" outlined color="error" text to="/administrateurs">
                                     <v-icon left>mdi-close-circle-outline</v-icon>Retour
                                 </v-btn>
                             </v-col>
@@ -125,7 +125,7 @@
                                         <v-btn @click="changePassword = !changePassword" class="mr-1" color="secondary" text outlined small>
                                             <v-icon left>mdi-cog-outline</v-icon>Modifier le password
                                         </v-btn>
-                                        <v-btn class="mr-1" outlined color="error" text to="/utilisateurs" small>
+                                        <v-btn class="mr-1" outlined color="error" text to="/administrateurs" small>
                                             <v-icon left>mdi-close-circle-outline</v-icon>Retour
                                         </v-btn>
                                         <v-btn outlined color="success" text @click="modificationProfil" small>
@@ -236,12 +236,12 @@ export default Vue.extend({
     created() {},
     beforeMount() {},
     mounted(): any {
-        //modification du utilisateur choisi
+        //modification du administrateur choisi
         if (
-            this.$route.params.infosUtilisateur != null &&
-            this.$route.params.infosUtilisateur != 0
+            this.$route.params.infosAdministrateur != null &&
+            this.$route.params.infosAdministrateur != 0
         ) {
-            this.user = this.$route.params.infosUtilisateur;
+            this.user = this.$route.params.infosAdministrateur;
             this.user.avatar = this.user.avatar ? this.user.avatar : 'https://thumbs.dreamstime.com/b/businessman-icon-vector-male-avatar-profile-image-profile-businessman-icon-vector-male-avatar-profile-image-182095609.jpg';
             setTimeout(() => {
                 this.isLoading = false;
@@ -249,7 +249,7 @@ export default Vue.extend({
             }, 1000);
         } else {
             return this.$router.push({
-                name: "Commerciaux"
+                name: "Administrateurs"
             });
         }
     },
@@ -258,9 +258,9 @@ export default Vue.extend({
             if (!this.$refs.form.validate() && (!this.$refs.form.validate() && this.changePassword))
                 return this.errorMessage("Veuillez vérifier les champs !");
 
-            this.user.role = this.user.isAdmin === true ? 'Administrateur' : 'Commercial'
+            this.user.role = this.user.isAdmin === true ? 'Administrateur' : 'Utilisateur'
             axiosApi
-                .put("/user/update/" + this.user._id, qs.stringify(this.user)) //update de l'utilisateur
+                .put("/user/update/" + this.user._id, qs.stringify(this.user)) //update de l'administrateur
                 .then((response: AxiosResponse) => {
                     if (response.data.error == false) {
                         this.$refs.form.reset();
@@ -270,7 +270,7 @@ export default Vue.extend({
                     }
                     setTimeout(() => {
                         this.$router.push({
-                            name: "Commerciaux"
+                            name: "Administrateurs"
                         });
                     }, 1000);
                 })

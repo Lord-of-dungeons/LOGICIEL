@@ -2,7 +2,7 @@
 <v-container id="event" fluid tag="section">
     <v-row justify="center">
         <v-col cols="12" md="12">
-            <base-material-card color="red">
+            <base-material-card color="red" :kinesisActive="false">
                 <template v-slot:heading>
                     <div v-if="$route.params.isEdit === false">
                         <div class="text-h5 white--text"><span>Event</span><br /></div>
@@ -17,54 +17,77 @@
                 <div v-else>
                     <div v-if="$route.params.isEdit === false">
                         <v-row>
-                            <v-col cols="6">
-                                <v-simple-table dense>
-                                    <template v-slot:default>
-                                        <tbody>
-                                            <tr>
-                                                <td>ID</td>
-                                                <td>{{ event.idEvent }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Name event</td>
-                                                <td>{{ event.name }}</td>
-                                            </tr>
-                                        </tbody>
-                                    </template>
-                                </v-simple-table>
+                            <v-col cols="12" md="6">
+                                <v-card outlined>
+                                    <v-simple-table dense>
+                                        <template v-slot:default>
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        <span class="red--text text-h6">Event</span>
+                                                    </th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>ID</td>
+                                                    <td>
+                                                        <v-chip dark small color="red">{{ event.idEvent }}</v-chip>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Name event</td>
+                                                    <td>{{ event.name }}</td>
+                                                </tr>
+                                            </tbody>
+                                        </template>
+                                    </v-simple-table>
+                                </v-card>
                             </v-col>
-                            <v-col cols="6">
-                                <v-simple-table dense v-if="isObjectNotEmpty(event.map)">
-                                    <template v-slot:default>
-                                        <tbody>
-                                            <tr>
-                                                <td>ID map</td>
-                                                <td>{{ event.map.idMap }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Name map</td>
-                                                <td>{{ event.map.name }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Path map</td>
-                                                <td>{{ event.map.mapPath }}</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Image map</td>
-                                                <td>
-                                                    <v-img transition="scale-transition" height="300" width="400" :src="'http://localhost:5000/' + event.map.mapPath" aspect-ratio="1" class="grey lighten-2">
-                                                        <template v-slot:placeholder>
-                                                            <v-row class="fill-height ma-0" align="center" justify="center"> </v-row>
-                                                        </template>
-                                                    </v-img>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </template>
-                                </v-simple-table>
+                            <v-col cols="12" md="6" v-if="isObjectNotEmpty(event.map)">
+                                <v-card outlined>
+                                    <v-simple-table dense>
+                                        <template v-slot:default>
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        <span class="red--text text-h6">Map</span>
+                                                    </th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>ID</td>
+                                                    <td>
+                                                        <v-chip dark small color="red">{{ event.map.idMap }}</v-chip>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>{{ event.map.name }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Path</td>
+                                                    <td>{{ event.map.mapPath }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Image</td>
+                                                    <td>
+                                                        <v-img transition="scale-transition" height="200" width="300" :src="'http://localhost:5000/' + event.map.mapPath" aspect-ratio="1" class="grey lighten-2">
+                                                            <template v-slot:placeholder>
+                                                                <v-row class="fill-height ma-0" align="center" justify="center"> </v-row>
+                                                            </template>
+                                                        </v-img>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </template>
+                                    </v-simple-table>
+                                </v-card>
                             </v-col>
                         </v-row>
-
                         <v-row class="mt-2">
                             <v-col cols="12" class="text-left">
                                 <v-btn class="mr-1" outlined color="error" text to="/events">
@@ -77,18 +100,20 @@
                         <v-form ref="form" v-model="rules.valid" lazy-validation>
                             <v-row>
                                 <v-col cols="12">
-                                    <div class="text-center">
+                                    <div class="mb-5">
                                         <v-row>
                                             <v-col cols="12" md="12" class="py-0">
                                                 <v-text-field color="red" label="Name*" v-model.trim="event.name" prepend-icon="mdi-alphabetical" clearable :rules="rules.caractereRules" required />
                                             </v-col>
-                                            <v-col cols="12" md="3" class="py-0">
-                                                <v-switch v-model="isEventMap" label="Map" color="red" disabled></v-switch>
+                                        </v-row>
+                                        <v-row>
+                                            <v-col cols="12" class="py-0">
+                                                <v-divider /> <span class="red--text">Map</span>
                                             </v-col>
-                                            <v-col cols="12" md="5" class="py-0" v-if="isEventMap">
+                                            <v-col cols="12" md="7" class="py-0">
                                                 <v-text-field color="red" label="Name*" v-model.trim="event.map.name" prepend-icon="mdi-alphabetical" clearable :rules="rules.caractereRules" required />
                                             </v-col>
-                                            <v-col cols="12" md="4" class="py-0" v-if="isEventMap">
+                                            <v-col cols="12" md="5" class="py-0">
                                                 <v-file-input color="red" small-chips v-model="event.map.img" accept="image/*" label="Image*" truncate-length="15"></v-file-input>
                                             </v-col>
                                         </v-row>
@@ -148,7 +173,6 @@ export default Vue.extend({
         return {
             isFirstload: false as boolean,
             isLoading: false as boolean,
-            isEventMap: true,
             event: {
                 name: null,
                 map: {
@@ -186,7 +210,7 @@ export default Vue.extend({
     },
     methods: {
         modificationEvent: function () {
-            if (!this.$refs.form.validate() && !this.$refs.form.validate())
+            if (!this.$refs.form.validate())
                 return this.errorMessage("Veuillez vérifier les champs !");
             const event = {
                 name: this.event.name,
@@ -205,7 +229,7 @@ export default Vue.extend({
                     this.configAxiosFormData()
                 ) //update
                 .then((response: AxiosResponse) => {
-                    if (this.isDataok(response)) {
+                    if (this.isDataOk(response)) {
                         this.$refs.form.reset();
                         this.successMessage("Sauvegarde des modifications effectuée !");
                         this.isLoading = true;

@@ -2,7 +2,7 @@
 <v-container id="map" fluid tag="section">
     <v-row justify="center">
         <v-col cols="12" md="12">
-            <base-material-card color="indigo">
+            <base-material-card color="indigo" :kinesisActive="false">
                 <template v-slot:heading>
                     <div v-if="$route.params.isEdit === false">
                         <div class="text-h5 white--text">
@@ -18,34 +18,50 @@
                 <v-skeleton-loader v-if="isFirstload" :loading="isLoading" type="table"></v-skeleton-loader>
                 <div v-else>
                     <div v-if="$route.params.isEdit === false">
-                        <v-simple-table dense v-if="isObjectNotEmpty(map)">
-                            <template v-slot:default>
-                                <tbody>
-                                    <tr>
-                                        <td>ID</td>
-                                        <td>{{ map.idMap }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Name</td>
-                                        <td>{{ map.name }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Map path</td>
-                                        <td>{{ map.mapPath }}</td>
-                                    </tr>
-                                    <tr>
-                                        <td>Image</td>
-                                        <td>
-                                            <v-img transition="scale-transition" height="300" width="400" :src="'http://localhost:5000/' + map.mapPath" aspect-ratio="1" class="grey lighten-2">
-                                                <template v-slot:placeholder>
-                                                    <v-row class="fill-height ma-0" align="center" justify="center"> </v-row>
-                                                </template>
-                                            </v-img>
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </template>
-                        </v-simple-table>
+                        <v-row>
+                            <v-col cols="12" md="12">
+                                <v-card outlined>
+                                    <v-simple-table dense v-if="isObjectNotEmpty(map)">
+                                        <template v-slot:default>
+                                            <thead>
+                                                <tr>
+                                                    <th>
+                                                        <span class="indigo--text text-h6">Map</span>
+                                                    </th>
+                                                    <th></th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                <tr>
+                                                    <td>ID</td>
+                                                    <td>
+                                                        <v-chip dark small color="indigo">{{ map.idMap }}</v-chip>
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Name</td>
+                                                    <td>{{ map.name }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Map path</td>
+                                                    <td>{{ map.mapPath }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Image</td>
+                                                    <td>
+                                                        <v-img transition="scale-transition" height="200" width="300" :src="'http://localhost:5000/' + map.mapPath" aspect-ratio="1" class="grey lighten-2">
+                                                            <template v-slot:placeholder>
+                                                                <v-row class="fill-height ma-0" align="center" justify="center"> </v-row>
+                                                            </template>
+                                                        </v-img>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </template>
+                                    </v-simple-table>
+                                </v-card>
+                            </v-col>
+                        </v-row>
                         <v-row class="mt-2">
                             <v-col cols="12" class="text-left">
                                 <v-btn class="mr-1" outlined color="error" text to="/maps">
@@ -157,7 +173,7 @@ export default Vue.extend({
     },
     methods: {
         modificationMap: function () {
-            if (!this.$refs.form.validate() && !this.$refs.form.validate())
+            if (!this.$refs.form.validate())
                 return this.errorMessage("Veuillez vérifier les champs !");
             const map = {
                 name: this.map.name,

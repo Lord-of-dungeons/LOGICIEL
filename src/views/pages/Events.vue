@@ -8,18 +8,20 @@
                     <v-icon aria-label="Close" class="ml-auto" @click="isDialogNewEvent = false">mdi-close</v-icon>
                 </v-card-title>
                 <v-col cols="12">
-                    <div class="text-center">
+                    <div class="mb-5">
                         <v-row>
                             <v-col cols="12" md="12" class="py-0">
-                                <v-text-field color="red" label="Name*" v-model.trim="event.name" prepend-icon="mdi-alphabetical" clearable :rules="rules.caractereRules" required />
+                                <v-text-field color="red" label="Name*" v-model.trim="event.name" prepend-icon="mdi-alphabetical" clearable :rules="rules.caractereRules"  />
                             </v-col>
-                            <v-col cols="12" md="3" class="py-0">
-                                <v-switch v-model="isEventMap" label="Map" color="red" disabled></v-switch>
+                        </v-row>
+                        <v-row>
+                            <v-col cols="12" class="py-0">
+                                <v-divider /> <span class="red--text">Map</span>
                             </v-col>
-                            <v-col cols="12" md="5" class="py-0" v-if="isEventMap">
+                            <v-col cols="12" md="7" class="py-0">
                                 <v-text-field color="red" label="Name*" v-model.trim="event.map.name" prepend-icon="mdi-alphabetical" clearable :rules="rules.caractereRules" required />
                             </v-col>
-                            <v-col cols="12" md="4" class="py-0" v-if="isEventMap">
+                            <v-col cols="12" md="5" class="py-0">
                                 <v-file-input color="red" small-chips v-model="event.map.img" accept="image/*" label="Image*" truncate-length="15" :rules="rules.champRules" required></v-file-input>
                             </v-col>
                         </v-row>
@@ -36,8 +38,7 @@
     <v-dialog v-model="isDialogDeleteEvent" width="500" overlay-opacity="0.8">
         <v-card outlined>
             <v-card-title>
-                Supprimer l'event {{ eventToDelete.firstname }}
-                {{ eventToDelete.lastname }} ?
+                Supprimer l'event {{ eventToDelete.name }} ?
             </v-card-title>
             <v-card-actions>
                 <v-spacer></v-spacer>
@@ -56,7 +57,7 @@
         </template>
         <v-row class="mt-8 mr-1">
             <v-btn color="red" @click="isDialogNewEvent = true" class="ml-3" :disabled="!isAdmin" dark>
-                <v-icon left>mdi-calendar-star</v-icon>Ajouter Event
+                <v-icon left>mdi-plus-box-outline</v-icon>Ajouter Event
             </v-btn>
             <v-btn color="red" icon @click="getEventsData" class="ml-3">
                 <v-icon large>mdi-refresh</v-icon>
@@ -158,7 +159,6 @@ export default Vue.extend({
                     img: null
                 }
             },
-            isEventMap: true,
             search: undefined as string | null | undefined,
             expanded: [] as Array < any > ,
             headers: [{

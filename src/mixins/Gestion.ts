@@ -213,7 +213,7 @@ export default Vue.extend({
             }
         },
         scrollToByRef(refName: string) {
-            this.$nextTick(() => { //this.$nextTick to refresh DOM
+            this.$nextTick(() => { //this.$nextTick to refresh DOM (or wait await this.$nextTick())
                 const el = this.$refs[refName];
                 if (el) {
                     el.scrollIntoView({
@@ -221,6 +221,19 @@ export default Vue.extend({
                     });
                 }
             });
-        }
+        },
+		cloneObject(obj: any) {
+			return JSON.parse(JSON.stringify(obj))
+		},
+		renameKey (object: any, key: any, newKey: any) {
+			const clonedObj = this.clone(object);
+			const targetKey = clonedObj[key];
+			clonedObj[key];
+			clonedObj[newKey] = targetKey;
+			return clonedObj;
+		},
+		clone  (obj: any)  {
+			return Object.assign({}, obj)
+		},
 	}
 });

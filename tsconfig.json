@@ -13,6 +13,7 @@
     "sourceMap": true,
     "noImplicitThis": false,
     "strictNullChecks": false,
+    "resolveJsonModule": true,
     //"noImplicitAny": false,
     //"strictFunctionTypes": false,
     "baseUrl": ".",

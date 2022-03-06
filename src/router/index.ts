@@ -47,15 +47,15 @@ const routes: Array<RouteConfig> = [
 				meta: setRequiresAuth(true)
 			},
 			{
-				name: 'Commerciaux',
-				path: '/utilisateurs',
-				component: () => import('@/views/pages/Utilisateurs.vue'),
+				name: 'Administrateurs',
+				path: '/administrateurs',
+				component: () => import('@/views/pages/Administrateurs.vue'),
 				meta: setRequiresAuth(true)
 			},
 			{
-				name: 'Informations-Commercial',
-				path: '/utilisateurs/utilisateur',
-				component: () => import('@/views/pages/InfosUtilisateur.vue'),
+				name: 'Informations-Administrateur',
+				path: '/administrateurs/administrateur',
+				component: () => import('@/views/pages/InfosAdministrateur.vue'),
 				meta: setRequiresAuth(true)
 			},
 			{
@@ -110,6 +110,18 @@ const routes: Array<RouteConfig> = [
 				name: 'Informations-Event',
 				path: '/events/event',
 				component: () => import('@/views/pages/InfosEvent.vue'),
+				meta: setRequiresAuth(true)
+			},
+			{
+				name: 'Equipments',
+				path: '/equipments',
+				component: () => import('@/views/pages/Equipments.vue'),
+				meta: setRequiresAuth(true)
+			},
+			{
+				name: 'Informations-Equipment',
+				path: '/equipments/equipment',
+				component: () => import('@/views/pages/InfosEquipment.vue'),
 				meta: setRequiresAuth(true)
 			},
 		]
