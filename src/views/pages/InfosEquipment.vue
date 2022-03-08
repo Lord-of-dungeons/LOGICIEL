@@ -48,12 +48,12 @@
                                                     </td>
                                                 </tr>
                                                 <tr>
-                                                    <td>Image path</td>
-                                                    <td>{{ equipment.imgPath }}</td>
-                                                </tr>
-                                                <tr>
                                                     <td>Price</td>
                                                     <td>{{ equipment.price }} fluz</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Image path</td>
+                                                    <td>{{ equipment.imgPath }}</td>
                                                 </tr>
                                                 <tr>
                                                     <td>Image</td>
@@ -431,7 +431,7 @@ export default Vue.extend({
                     this.catchAxios(error);
                 });
         },
-        renameKeyPayload(data: any){
+        renameKeyPayload(data: any) {
             data.baseFeature = this.renameKey(data.baseFeature, 'attackSpeed', 'attack_speed')
             data = this.renameKey(data, 'isLegendary', 'is_legendary')
             data = this.renameKey(data, 'imgPath', 'img_path')

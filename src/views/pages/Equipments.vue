@@ -90,8 +90,8 @@
                     </div>
                     <small>*Veuillez remplir les champs</small>
                     <v-col cols="12" class="text-right">
-                        <v-btn class="mr-1" color="error" text @click.prequipment="isDialogNewEquipment = false">Fermer</v-btn>
-                        <v-btn color="success" text @click.prequipment="saveNewEquipment">Sauvegarder</v-btn>
+                        <v-btn class="mr-1" color="error" text @click.prevent="isDialogNewEquipment = false">Fermer</v-btn>
+                        <v-btn color="success" text @click.prevent="saveNewEquipment">Sauvegarder</v-btn>
                     </v-col>
                 </v-col>
             </v-form>
@@ -171,7 +171,7 @@
                         <v-icon left>mdi-pencil-circle-outline</v-icon>
                         Modification
                     </v-btn>
-                    <v-btn :disabled="(isDataOk(item.disabled) ? item.disabled : false) || !isAdmin" small outlined color="pink" @click="dialogDeleteEquipment(item)" class="ml-3">
+                    <v-btn :disabled="(isDataOk(item.disabled) ? item.disabled : false) || !isAdmin" small outlined color="red" @click="dialogDeleteEquipment(item)" class="ml-3">
                         <v-icon left>mdi-delete-circle-outline</v-icon>
                         Suppression
                     </v-btn>

@@ -88,7 +88,7 @@
                         <v-icon left>mdi-pencil-circle-outline</v-icon>
                         Modification
                     </v-btn>
-                    <v-btn :disabled="(isDataOk(item.disabled) ? item.disabled : false) || !isAdmin" small outlined color="pink" @click="dialogDeleteMap(item)" class="ml-3">
+                    <v-btn :disabled="(isDataOk(item.disabled) ? item.disabled : false) || !isAdmin" small outlined color="red" @click="dialogDeleteMap(item)" class="ml-3">
                         <v-icon left>mdi-delete-circle-outline</v-icon>
                         Suppression
                     </v-btn>

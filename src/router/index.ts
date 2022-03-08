@@ -133,7 +133,19 @@ const routes: Array<RouteConfig> = [
 			{
 				name: 'Informations-Object',
 				path: '/objects/object',
-				component: () => import('@/views/pages/Object.vue'),
+				component: () => import('@/views/pages/InfosObject.vue'),
+				meta: setRequiresAuth(true)
+			},
+			{
+				name: 'Monsters',
+				path: '/monsters',
+				component: () => import('@/views/pages/Monsters.vue'),
+				meta: setRequiresAuth(true)
+			},
+			{
+				name: 'Informations-Monster',
+				path: '/monsters/monstre',
+				component: () => import('@/views/pages/InfosMonster.vue'),
 				meta: setRequiresAuth(true)
 			}
 		]
