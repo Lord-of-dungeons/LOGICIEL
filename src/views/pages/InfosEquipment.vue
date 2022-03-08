@@ -431,14 +431,14 @@ export default Vue.extend({
                     this.catchAxios(error);
                 });
         },
-        renameKeyPayload(equipment: any){
-            equipment.baseFeature = this.renameKey(equipment.baseFeature, 'attackSpeed', 'attack_speed')
-            equipment = this.renameKey(equipment, 'isLegendary', 'is_legendary')
-            equipment = this.renameKey(equipment, 'imgPath', 'img_path')
-            delete equipment.baseFeature.attackSpeed;
-            delete equipment.isLegendary;
-            delete equipment.imgPath;
-            return equipment
+        renameKeyPayload(data: any){
+            data.baseFeature = this.renameKey(data.baseFeature, 'attackSpeed', 'attack_speed')
+            data = this.renameKey(data, 'isLegendary', 'is_legendary')
+            data = this.renameKey(data, 'imgPath', 'img_path')
+            delete data.baseFeature.attackSpeed;
+            delete data.isLegendary;
+            delete data.imgPath;
+            return data
         }
     },
 });

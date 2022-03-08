@@ -206,7 +206,7 @@ import {
     AxiosResponse
 } from 'axios';
 import moment from 'moment';
-import equipment from '../../../autres/equipement_data.json'
+//import equipment from '../../../autres/equipement_data.json'
 
 export default Vue.extend({
     name: 'Equipments',
@@ -289,7 +289,7 @@ export default Vue.extend({
     async mounted() {
         try {
             await this.getEquipmentsData();
-            this.equipment = equipment
+            //this.equipment = equipment
         } catch (error) {
             console.log(error)
         }

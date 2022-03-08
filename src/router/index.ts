@@ -124,6 +124,18 @@ const routes: Array<RouteConfig> = [
 				component: () => import('@/views/pages/InfosEquipment.vue'),
 				meta: setRequiresAuth(true)
 			},
+			{
+				name: 'Objects',
+				path: '/objects',
+				component: () => import('@/views/pages/Objects.vue'),
+				meta: setRequiresAuth(true)
+			},
+			{
+				name: 'Informations-Object',
+				path: '/objects/object',
+				component: () => import('@/views/pages/Object.vue'),
+				meta: setRequiresAuth(true)
+			}
 		]
 	},
 	{
@@ -147,8 +159,8 @@ const router = new VueRouter({
 	routes
 });
 
-router.beforeEach(async(to, from, next) => {
-	if (to.matched.some((record) => record.meta.requiresAuth)) {
+router.beforeEach(async (to: any, from: any, next: any) => {
+	if (to.matched.some((record: { meta: { requiresAuth: any; }; }) => record.meta.requiresAuth)) {
 		// this route requires auth, check if logged in
 		// if not, redirect to login page.
 		const token = localStorage.getItem('SET_TOKEN');
