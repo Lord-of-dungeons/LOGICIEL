@@ -3,16 +3,15 @@ import Vuetify from 'vuetify/lib/framework';
 import fr from 'vuetify/src/locale/fr';
 import en from 'vuetify/src/locale/en';
 import colors from 'vuetify/lib/util/colors'
-
 import { TiptapVuetifyPlugin } from 'tiptap-vuetify'
 import 'tiptap-vuetify/dist/main.css'// don't forget to import CSS styles
 import 'vuetify/dist/vuetify.min.css'// Vuetify's CSS styles 
 
 const vuetify: Vuetify = new Vuetify({
   theme: {
-      options: {
-        customProperties: true,
-      },
+    options: {
+      customProperties: true,
+    },
     themes: {
       light: {
         primary: '#F3C98B',//FFCC80
@@ -34,10 +33,10 @@ const vuetify: Vuetify = new Vuetify({
       }
     },
   },
-    lang: {
-      locales: { fr, en },
-      current: 'fr',
-    },
+  lang: {
+    locales: { fr, en },
+    current: 'fr',
+  },
 });
 
 Vue.use(Vuetify);

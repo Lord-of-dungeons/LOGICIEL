@@ -94,7 +94,7 @@ export default Vue.extend({
             children: [{
                 title: 'Administrateurs',
                 icon: 'mdi-account-tie-outline',
-                to: '/utilisateurs',
+                to: '/administrateurs',
             }, {
                 title: 'Clients',
                 icon: 'mdi-clipboard-account-outline',

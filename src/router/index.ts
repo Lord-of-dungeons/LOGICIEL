@@ -32,123 +32,133 @@ const routes: Array<RouteConfig> = [
 		// this generates a separate chunk (about.[hash].js) for this route
 		// which is lazy-loaded when the route is visited.
 		component: () => import(/* webpackChunkName: "about" */ '@/views/Index.vue'),
-		children: [
-			{
-				name: 'Connexion',
-				path: '/login',
-				component: () => import('@/views/pages/Login.vue'),
-				meta: setRequiresAuth(false)
-			},
-			{
-				name: 'Accueil',
-				path: '/',
-				component: () => import('@/views/pages/Dashboard.vue'),
-				//beforeEnter: (to, from, next) => Auth(next, to)
-				meta: setRequiresAuth(true)
-			},
-			{
-				name: 'Administrateurs',
-				path: '/administrateurs',
-				component: () => import('@/views/pages/Administrateurs.vue'),
-				meta: setRequiresAuth(true)
-			},
-			{
-				name: 'Informations-Administrateur',
-				path: '/administrateurs/administrateur',
-				component: () => import('@/views/pages/InfosAdministrateur.vue'),
-				meta: setRequiresAuth(true)
-			},
-			{
-				name: 'Calendrier',
-				path: '/calendar',
-				component: () => import('@/views/pages/Calendar.vue'),
-				meta: setRequiresAuth(true)
-			},
-			{
-				name: 'Clients',
-				path: '/clients',
-				component: () => import('@/views/pages/Clients.vue'),
-				meta: setRequiresAuth(true)
-			},
-			{
-				name: 'Informations-Client',
-				path: '/clients/client',
-				component: () => import('@/views/pages/InfosClient.vue'),
-				meta: setRequiresAuth(true)
-			},
-			{
-				name: 'Paramètres',
-				path: '/parametres',
-				component: () => import('@/views/pages/Parametres.vue'),
-				meta: setRequiresAuth(true)
-			},
-			{
-				name: 'Support',
-				path: '/support',
-				component: () => import('@/views/pages/Support.vue'),
-				meta: setRequiresAuth(true)
-			},
-			{
-				name: 'Maps',
-				path: '/maps',
-				component: () => import('@/views/pages/Maps.vue'),
-				meta: setRequiresAuth(true)
-			},
-			{
-				name: 'Informations-Map',
-				path: '/maps/map',
-				component: () => import('@/views/pages/InfosMap.vue'),
-				meta: setRequiresAuth(true)
-			},
-			{
-				name: 'Events',
-				path: '/events',
-				component: () => import('@/views/pages/Events.vue'),
-				meta: setRequiresAuth(true)
-			},
-			{
-				name: 'Informations-Event',
-				path: '/events/event',
-				component: () => import('@/views/pages/InfosEvent.vue'),
-				meta: setRequiresAuth(true)
-			},
-			{
-				name: 'Equipments',
-				path: '/equipments',
-				component: () => import('@/views/pages/Equipments.vue'),
-				meta: setRequiresAuth(true)
-			},
-			{
-				name: 'Informations-Equipment',
-				path: '/equipments/equipment',
-				component: () => import('@/views/pages/InfosEquipment.vue'),
-				meta: setRequiresAuth(true)
-			},
-			{
-				name: 'Objects',
-				path: '/objects',
-				component: () => import('@/views/pages/Objects.vue'),
-				meta: setRequiresAuth(true)
-			},
-			{
-				name: 'Informations-Object',
-				path: '/objects/object',
-				component: () => import('@/views/pages/InfosObject.vue'),
-				meta: setRequiresAuth(true)
-			},
-			{
-				name: 'Monsters',
-				path: '/monsters',
-				component: () => import('@/views/pages/Monsters.vue'),
-				meta: setRequiresAuth(true)
-			},
-			{
-				name: 'Informations-Monster',
-				path: '/monsters/monstre',
-				component: () => import('@/views/pages/InfosMonster.vue'),
-				meta: setRequiresAuth(true)
-			}
-		]
+		children: [{
+			name: 'Connexion',
+			path: '/login',
+			component: () => import('@/views/pages/Login.vue'),
+			meta: setRequiresAuth(false)
+		},
+		{
+			name: 'Accueil',
+			path: '/',
+			component: () => import('@/views/pages/Dashboard.vue'),
+			//beforeEnter: (to, from, next) => Auth(next, to)
+			meta: setRequiresAuth(true)
+		},
+		{
+			name: 'Administrateurs',
+			path: '/administrateurs',
+			component: () => import('@/views/pages/Administrateurs.vue'),
+			meta: setRequiresAuth(true)
+		},
+		{
+			name: 'Informations-Administrateur',
+			path: '/administrateurs/administrateur',
+			component: () => import('@/views/pages/InfosAdministrateur.vue'),
+			meta: setRequiresAuth(true)
+		},
+		{
+			name: 'Calendrier',
+			path: '/calendar',
+			component: () => import('@/views/pages/Calendar.vue'),
+			meta: setRequiresAuth(true)
+		},
+		{
+			name: 'Clients',
+			path: '/clients',
+			component: () => import('@/views/pages/Clients.vue'),
+			meta: setRequiresAuth(true)
+		},
+		{
+			name: 'Informations-Client',
+			path: '/clients/client',
+			component: () => import('@/views/pages/InfosClient.vue'),
+			meta: setRequiresAuth(true)
+		},
+		{
+			name: 'Paramètres',
+			path: '/parametres',
+			component: () => import('@/views/pages/Parametres.vue'),
+			meta: setRequiresAuth(true)
+		},
+		{
+			name: 'Support',
+			path: '/support',
+			component: () => import('@/views/pages/Support.vue'),
+			meta: setRequiresAuth(true)
+		},
+		{
+			name: 'Maps',
+			path: '/maps',
+			component: () => import('@/views/pages/Maps.vue'),
+			meta: setRequiresAuth(true)
+		},
+		{
+			name: 'Informations-Map',
+			path: '/maps/map',
+			component: () => import('@/views/pages/InfosMap.vue'),
+			meta: setRequiresAuth(true)
+		},
+		{
+			name: 'Events',
+			path: '/events',
+			component: () => import('@/views/pages/Events.vue'),
+			meta: setRequiresAuth(true)
+		},
+		{
+			name: 'Informations-Event',
+			path: '/events/event',
+			component: () => import('@/views/pages/InfosEvent.vue'),
+			meta: setRequiresAuth(true)
+		},
+		{
+			name: 'Equipments',
+			path: '/equipments',
+			component: () => import('@/views/pages/Equipments.vue'),
+			meta: setRequiresAuth(true)
+		},
+		{
+			name: 'Informations-Equipment',
+			path: '/equipments/equipment',
+			component: () => import('@/views/pages/InfosEquipment.vue'),
+			meta: setRequiresAuth(true)
+		},
+		{
+			name: 'Objects',
+			path: '/objects',
+			component: () => import('@/views/pages/Objects.vue'),
+			meta: setRequiresAuth(true)
+		},
+		{
+			name: 'Informations-Object',
+			path: '/objects/object',
+			component: () => import('@/views/pages/InfosObject.vue'),
+			meta: setRequiresAuth(true)
+		},
+		{
+			name: 'Monsters',
+			path: '/monsters',
+			component: () => import('@/views/pages/Monsters.vue'),
+			meta: setRequiresAuth(true)
+		},
+		{
+			name: 'Informations-Monster',
+			path: '/monsters/monstre',
+			component: () => import('@/views/pages/InfosMonster.vue'),
+			meta: setRequiresAuth(true)
+		},
+		{
+			name: 'Vocations',
+			path: '/vocations',
+			component: () => import('@/views/pages/Vocations.vue'),
+			meta: setRequiresAuth(true)
+		},
+		{
+			name: 'Informations-Vocation',
+			path: '/vocations/vocation',
+			component: () => import('@/views/pages/InfosVocation.vue'),
+			meta: setRequiresAuth(true)
+		}]
 	},
 	{
 		path: '*',
